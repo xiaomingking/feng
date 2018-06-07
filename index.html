@@ -63,14 +63,16 @@
       },
       methods:{
         play(){
-          alert(1)
           let small =  document.getElementsByClassName("small")
           console.log(small)
           for (var i = 0; i < small.length; i++) {
             small[i].play()
           }
-          document.getElementsByClassName("index")[0].style.opacity = 0
         }
+      },
+      mounted(){
+          document.getElementsByClassName("index")[0].style.opacity = 0
+          this.play()
       }
     })
   </script>
