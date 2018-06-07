@@ -34,7 +34,7 @@
       position: absolute;
       top:0;
       left:0;
-      opacity:0;
+      opacity:1;
       z-index:1000;
     }
   </style>
@@ -43,15 +43,15 @@
 <body>
   <div id="box" @click="play">
     <div class="index"></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/001.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/002.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/003.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/004.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/005.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/001.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/002.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/003.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/004.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/005.mp4"></video></div>
     <div class="media"><video class="small" id="small"   loop  src="./mp4/006.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/007.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/008.mp4"></video></div>
-    <div class="media"><video class="small" muted autoplay  loop  src="./mp4/009.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/007.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/008.mp4"></video></div>
+    <div class="media"><video class="small" muted loop  src="./mp4/009.mp4"></video></div>
   </div>
   <script>
     var app = new Vue({
@@ -64,8 +64,11 @@
       },
       methods:{
         play(){
-          let small =  document.getElementById("small")
-          small.play()
+          let small =  document.getElementsByClassName("small")
+          console.log(small)
+          for (var i = 0; i < small.length; i++) {
+            small[i].play()
+          }
         }
       }
     })
