@@ -42,7 +42,7 @@
 </head>
 <body>
   <div id="box">
-    <div class="index" @click="play"></div>
+    <div class="index" @click.stop="play"></div>
     <div class="media"><video class="small" muted loop  src="./mp4/001.mp4"></video></div>
     <div class="media"><video class="small" muted loop  src="./mp4/002.mp4"></video></div>
     <div class="media"><video class="small" muted loop  src="./mp4/003.mp4"></video></div>
@@ -69,6 +69,7 @@
           for (var i = 0; i < small.length; i++) {
             small[i].play()
           }
+          small[9].pause()
         }
       }
     })
