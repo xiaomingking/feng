@@ -136,7 +136,33 @@
       line-height:30px;
       opacity:0;
     }
-    .text1, .text2 {
+    .three {
+      color:#f18ce7;
+      transition:all 1s;
+      font-style:italic;
+      position:absolute;
+      font-weight:bold;
+      top:22%;
+      font-size:22px;
+      width:100%;
+      text-align:center;
+      line-height:30px;
+      opacity:0;
+    }
+    .four {
+      color:#f18ce7;
+      transition:all 1s;
+      font-style:italic;
+      position:absolute;
+      font-weight:bold;
+      top:28%;
+      font-size:22px;
+      width:100%;
+      text-align:center;
+      line-height:30px;
+      opacity:0;
+    }
+    .text1, .text2,  .text3, .text4{
       opacity:1;
       transition:all 1s;
     }
@@ -149,8 +175,10 @@
     <div class="bgcolor">
       <img src="./mp4/timg.jpg" alt="" class="img">
     </div>
-    <div class="one" :class="{text1:text1}">爱就像 蓝天白云</div>
-    <div class="two" :class="{text2:text2}">晴空万里 突然暴风雨</div>
+    <div class="one" :class="{text1:text1}">爱就像 </div>
+    <div class="two" :class="{text2:text2}">蓝天白云</div>
+    <div class="three" :class="{text3:text3}">晴空万里</div>
+    <div class="four" :class="{text4:text4}"> 突然暴风雨</div>
      <div class="wrap" @click="huanyuan" :class="{feng:feng}">
             <div class="box1"></div>
             <div class="box2"></div>
@@ -171,6 +199,8 @@
         feng:true,
         text1:false,
         text2:false,
+        text3:false,
+        text4:false,
         msg:''
       },
       watch:{
@@ -182,6 +212,12 @@
             setTimeout(()=>{
               this.text2 = true
             },1800)
+            setTimeout(()=>{
+              this.text3 = true
+            },3100)
+            setTimeout(()=>{
+              this.text4 = true
+            },4300)
           }
         }
       },
@@ -193,6 +229,8 @@
           this.feng = true
           this.text1 = false
           this.text2 = false
+          this.text3 = false
+          this.text4 = false
           this.msg = ''
         },
         change () {
@@ -216,7 +254,7 @@
             return
           }
            if (this.btnText === '小傻瓜') {
-             this.btnText = '乖，圈儿'
+             this.btnText = '乖'
              return
           }
           if (this.btnText === '点我点我') {
