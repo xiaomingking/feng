@@ -8,71 +8,218 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> 
   <meta name="format-detection" content="telephone=no">
-  <title>娜娜</title>
+  <title>123</title>
   <link rel="stylesheet" href="./common.css">
+  <link rel="stylesheet" href="https://unpkg.com/vant/lib/vant-css/index.css">
   <style>
     #box {
       width:100%;
-      display: flex;
       height:100%;
-      flex-wrap:wrap;
     }
-    .media {
-      width:33.3%;
-      height:33.3%;
-      overflow:hidden;
-    }
-    .small {
-      width:100%;
-      height: 100%;
-    }
-    .index {
+    .bgcolor {
       width:100%;
       height:100%;
-      background:#ddd;
-      position: absolute;
-      top:0;
-      left:0;
-      opacity:0.9;
-      z-index:1000;
+    }
+    .img {
+       width:100%;
+       height:100%;
+    }
+    button {
+      position:absolute;
+      top:80%;
+      border:none;
+      font-size:30px;
+      background:transparent;
+      color:#a5a5c9;
+      outline:none;
+      width:100%;
+      text-align:center;
+    }
+    .btn {
+      opacity:0;
+      transition:all 1s;
+    }
+    .feng {
+      opacity:0;
+      transition:all 2s;
+    }
+    .wrap {
+        width: 160px;
+        height: 160px;
+        position: absolute;
+        transition:all 2s;
+        top:66%;
+        left:26%;
+        animation: rotate 2s linear infinite;
+        /* animation: name duration timing-function delay iteration-count direction;
+         rotate   name              动画名字
+         2s       duration          规定完成动画所花费的时间，以秒或毫秒计。   
+         linear   timing-function   规定动画的速度曲线，动画从头到尾的速度是相同的。
+         infinite iteration-count   规定动画应该播放的次数，规定动画应该无限次播放。*/
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .box4 {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+    }
+
+    .box1 {
+        left: 40px;
+        background: linear-gradient(to right, #00ced1 50%, transparent 50%);
+        border-radius: 40px 0 0 40px;
+    }
+
+    .box2 {
+        right: 0;
+        background: linear-gradient(to bottom, #ff4500 50%, transparent 50%);
+        border-radius: 40px 40px 0 0;
+        top: 40px;
+    }
+
+    .box3 {
+        left: 40px;
+        background: linear-gradient(to left, #ffc0cb 50%, transparent 50%);
+        border-radius: 0 40px 40px 0;
+        top: 80px;
+    }
+
+    .box4 {
+        top: 40px;
+        background: linear-gradient(to top, #d4dc14 50%, transparent 50%);
+        border-radius: 0 0 40px 40px;
+    }
+
+    .gunzi {
+        width: 20px;
+        height: 260px;
+        background: black;
+        position: absolute;
+        z-index: -1;
+        top: 168px;
+        left: 160px;
+    }
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    .one {
+      position:absolute;
+      top:10%;
+      font-size:22px;
+      font-weight:bold;
+      width:100%;
+      text-align:center;
+      line-height:30px;
+      color:#f18ce7;
+      font-style:italic;
+      transition:all 1s;
+      opacity:0;
+    }
+    .two {
+      color:#f18ce7;
+      transition:all 1s;
+      font-style:italic;
+      position:absolute;
+      font-weight:bold;
+      top:16%;
+      font-size:22px;
+      width:100%;
+      text-align:center;
+      line-height:30px;
+      opacity:0;
+    }
+    .text1, .text2 {
+      opacity:1;
+      transition:all 1s;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vant/lib/vant.min.js"></script>
 </head>
 <body>
   <div id="box">
-    <div class="index" @click.stop="play"></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/001.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/002.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/003.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/004.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/005.mp4"></video></div>
-    <div class="media"><video class="small" autoplay id="small"   loop  src="./mp4/006.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/007.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop  src="./mp4/008.mp4"></video></div>
-    <div class="media"><video class="small" autoplay muted loop src="./mp4/009.mp4"></video></div>
+    <div class="bgcolor">
+      <img src="./mp4/timg.jpg" alt="" class="img">
+    </div>
+    <div class="one" :class="{text1:text1}">爱就像 蓝天白云</div>
+    <div class="two" :class="{text2:text2}">晴空万里 突然暴风雨</div>
+     <div class="wrap" :class="{feng:feng}">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+            <div class="box4"></div>
+        </div>
+        <div class="gunzi"></div>
+    <button @click="change" :class="{btn:btn}">{{btnText}}</button>
+    <button v-show="timeout">{{msg}}</button>
   </div>
   <script>
     var app = new Vue({
       el:'#box',
       data:{
-        message:'娜娜',
-        videoUrl:[
-          
-        ]
+        btnText:'点我',
+        btn:false,
+        timeout:false,
+        feng:true,
+        text1:false,
+        text2:false,
+        msg:''
       },
-      methods:{
-        play(){
-          let small =  document.getElementsByClassName("small")
-          console.log(small)
-          for (var i = 0; i < small.length; i++) {
-            small[i].play()
+      watch:{
+        feng (v) {
+          if(!v) {
+             setTimeout(()=>{
+              this.text1 = true
+            },500)
+            setTimeout(()=>{
+              this.text2 = true
+            },1500)
+           
           }
         }
       },
+      methods:{
+        change () {
+          if(this.btnText === '乖，圈儿'){
+            this.btnText = 'goodbye'
+            this.btn = true
+            this.timeout  = true
+            setTimeout(()=>{
+               this.msg = '3'
+            },1000)
+             setTimeout(()=>{
+               this.msg = '2'
+            },2000)
+             setTimeout(()=>{
+               this.msg = '1'
+            },3000)
+            setTimeout(()=>{
+              this.timeout  = false
+              this.feng = false
+            },4000)
+            return
+          }
+           if (this.btnText === '小傻瓜') {
+             this.btnText = '乖，圈儿'
+             return
+          }
+          if (this.btnText === '点我点我') {
+             this.btnText = '小傻瓜'
+             return
+          }
+          this.btnText = '点我点我'
+        }
+      },
       mounted(){
-          document.getElementsByClassName("index")[0].style.opacity = 0
-          this.play()
+         
       }
     })
   </script>
