@@ -151,7 +151,7 @@
     </div>
     <div class="one" :class="{text1:text1}">爱就像 蓝天白云</div>
     <div class="two" :class="{text2:text2}">晴空万里 突然暴风雨</div>
-     <div class="wrap" :class="{feng:feng}">
+     <div class="wrap" @click="huanyuan" :class="{feng:feng}">
             <div class="box1"></div>
             <div class="box2"></div>
             <div class="box3"></div>
@@ -181,12 +181,20 @@
             },500)
             setTimeout(()=>{
               this.text2 = true
-            },1500)
-           
+            },1800)
           }
         }
       },
       methods:{
+        huanyuan () {
+          this.btnText = '点我'
+          this.btn = false
+          this.timeout = false
+          this.feng = true
+          this.text1 = false
+          this.text2 = false
+          this.msg = ''
+        },
         change () {
           if(this.btnText === '乖，圈儿'){
             this.btnText = 'goodbye'
